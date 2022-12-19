@@ -1,44 +1,30 @@
-//fetch  --> peticion --> nos devuelve una promesa
-//then --> obtenemos response a esa promesa, esta response la necesitamos convertir en un objeto que entendamos --> RESPONSE.json() --> nueva promesa
-//then --> resolvemos la nueva promesa y obtenemos un objeto en formato json
+let actualPos=1;
+let pokeArray = [];
+let imgHigh=[];
+let imgLow=[];
+let altaRes = false;
 
-const iniPos=1;
+const cargarMas = () => {
+  actualPos = actualPos + 12;
+ init(actualPos); 
+}
 
+const cambiaResolucion = () => {
+  altaRes = !altaRes;
+  for(i=0;i<pokeArray.length;i++){
+    miImg$$ = document.getElementById(i+1);    
+    if(altaRes){
+      miImg$$.src = imgHigh[i];  
+    }else{
+      miImg$$.src = imgLow[i];  
+    }    
+  }  
+}
 
-let myArray = [];
-fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-    .then((response) => response.json())
-    .then((responseJson) => {
-        myArray = [...myArray, responseJson]
-        console.log(myArray)
-    })
+const btn1 = document.querySelector('#btn1');
+btn1.onclick = cargarMas;  
 
-const getPokemon = async (name) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-  const responseJson = await response.json();
-  console.log(responseJson);
-  myArray = [...myArray, responseJson];
-};
+const btn2 = document.querySelector('#btn2');
+btn2.onclick = cambiaResolucion;  
 
-const init = async () => {
-  for(let i=iniPos;i<iniPos+11;i++){
-    await getPokemon(i);  
-  }
-
-  console.log(myArray);
-  for (const pokemon of myArray) {
-    const myDiv$$ = document.querySelector(".pokedex");
-    const elementList$$ = document.createElement("li");
-    elementList$$.className="pokeCard"
-    myDiv$$.appendChild(elementList$$);
-    const pokeName$$ = document.createElement("h3");
-    pokeName$$.textContent=pokemon.name;
-    elementList$$.appendChild(pokeName$$);
-    const pokeImg$$ = document.createElement("img");
-    pokeImg$$.className="pokeImg";
-    pokeImg$$.src=pokemon.sprites.front_default;
-    elementList$$.appendChild(pokeImg$$);    
-  }
-};
-
-init();
+init(1);

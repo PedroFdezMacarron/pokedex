@@ -5,15 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="stylesheet" href="./styles/specimen_files/specimen_stylesheet.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="./styles/style.css">
+    <style type="text/css">
+        body{
+    font-family: 'Flexo-CapsDEMO';
+                }
+    </style>
+
+
+    <script src="./js/api.js" defer></script>   
+    <script src="./js/varios.js" defer></script>        
     <script src="./js/main.js" defer></script>
+    
+    
 </head>
 <body>
-    <div class="pokeMain">
-        <div class="container">
-            <h1>Pokédex</h1>
-            <ol class="pokedex">
 
+
+    <div class="pokeMain">
+        <div class="menu">            
+            <h1>Pokédex</h1>
+            <button id="btn1" class="boton">Cargar más pokemons</button>
+            <button id="btn2" class="boton">Cambia resolución</button>
+        </div>        
+        <div class="container">            
+            <ol class="pokedex">
             </ol>
         </div>
     </div>

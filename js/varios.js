@@ -9,3 +9,13 @@ DebilidadResistencia: "En la parte inferior de la cara podemos ver la Debilidad 
 CosteRetirada: "El numero de bolas estrella bajo el epígrafe retreat o retirada indica cuanto le cuesta al Pokémon escapar del combate.",
 SimboloRarezaNumeroExpansion: "Estos tres elementos no tienen efecto en el juego de cartas, pero son LA CLAVE para identificar las cartas Pokémon, por lo que les dedidaremos la próxima sección.",
 }
+
+function zeroFill( number, width )
+{
+  width -= number.toString().length;
+  if ( width > 0 )
+  {
+    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+  }
+  return number + ""; // siempre devuelve tipo cadena
+}

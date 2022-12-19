@@ -1,53 +1,110 @@
+/* dark_grey  #616161; */
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Flexo-CapsDEMO'
+}
+
+@font-face {
+    font-family: 'Flexo-CapsDEMO';
+    src: url('Flexo-CapsDEMO-webfont.woff2') format('woff2'),
+         url('Flexo-CapsDEMO-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .pokeMain{
-    background-color: rgb(39, 39, 39);
+    /* background-color: rgb(39, 39, 39); */
+    max-width: 100%;
+    background-image:url("./images/dark_background.png");
+    /* background-repeat:repeat; */    
+    font-family: "Flexo-Demi",arial,sans-serif;
+    color: grey;
+}
+
+.menu{
     margin: 0px auto;
-    width: 150vh;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    font-family: "flexo-regular";
+    font-size: 30px;
+    background-color: white;
+    width: 80%;
 }
 
 .container{
-    background-color: rgb(151, 151, 151);
-    margin: 0px auto; 
-    width: 100vh;
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+    max-width: 80vw;
+    background-image:url("./images/light_background.png");    
+    background-repeat:repeat;
+    padding: 20px;
 }
 
 
 .pokedex{
+    margin: 0px auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap:20px
+    justify-content: space-around;    
+    background-color: white;
+    column-gap: 20px;;
+
 }
 
 
 
 .pokeCard{
-    width: 200px;
-    height: 250px;
-    background-color:rgb(230, 230, 230);
+    /* width: 480px;
+    height: 480px; */
+    background-color:rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgb(202, 202, 202);
-    pad:20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color:black;
+    font-family: "Flexo-Demi",arial,sans-serif;
+    font-size: 145%;
+    padding-bottom: 50px;;
+}
+h5{
+    color: grey;
+    font-size: 12.8px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+h4{
+    color: black;
+    font-size: 23px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+
+.pokeImg{
+    /* max-width: 180px; */
+    width: 205px;
+    
+    background-color: rgb(240, 240, 240);
     border-radius: 4px;
 }
 
-.pokeImg{
-    width: 180px;
-    height: 180px;
-    
-}
-
-.siguenos__boton{
+.boton{
     font-size: 15px;
     border-radius: 1px;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 200px;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 4px;
     text-decoration: none;
     text-align: center;  
-    color: black;
+    color: rgb(133, 118, 197);
     font-weight: 500;
   }
