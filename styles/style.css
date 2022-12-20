@@ -55,6 +55,7 @@
     justify-content: space-around;    
     background-color: white;
     column-gap: 20px;;
+    width: 70%;
 
 }
 
@@ -83,7 +84,7 @@ h4{
     color: black;
     font-size: 23px;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 
@@ -98,9 +99,8 @@ h4{
 .boton{
     font-size: 15px;
     border-radius: 1px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 200px;
+    padding: 10px;    
+    min-width: 200px;
     border: 1px solid black;
     border-radius: 4px;
     text-decoration: none;
@@ -108,3 +108,38 @@ h4{
     color: rgb(133, 118, 197);
     font-weight: 500;
   }
+  .cardPie{
+    width: 100%;
+    display: flex;
+    justify-content:flex-start;
+    gap:10px
+  }
+  .cardSlot{
+    font-size: 13px;
+    font-weight:600;
+    background-color: rgb(109, 226, 109);
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    width: 35%;
+    text-align: center;    
+  }
+  .planta{
+    background-color: rgb(109, 226, 109);    
+  }
+  .fuego{
+    background-color: rgb(218, 148, 50);    
+  }
+
+  .foot{
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    font-family: "flexo-regular";
+    font-size: 30px;
+    background-color: white;
+    width: 80%;
+}
+

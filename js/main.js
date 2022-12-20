@@ -6,7 +6,7 @@ let altaRes = false;
 
 const cargarMas = () => {
   actualPos = actualPos + 12;
- init(actualPos); 
+  init(actualPos,11); 
 }
 
 const cambiaResolucion = () => {
@@ -21,10 +21,20 @@ const cambiaResolucion = () => {
   }  
 }
 
+const cargarTodos = () =>{
+  console.log("cargar todos",actualPos,150-actualPos-12)
+  actualPos = actualPos + 12;
+  init(actualPos,150-actualPos);   
+}
+
+
 const btn1 = document.querySelector('#btn1');
 btn1.onclick = cargarMas;  
 
 const btn2 = document.querySelector('#btn2');
 btn2.onclick = cambiaResolucion;  
 
-init(1);
+const btn3 = document.querySelector('#btn3');
+btn3.onclick = cargarTodos;  
+
+init(1,11);

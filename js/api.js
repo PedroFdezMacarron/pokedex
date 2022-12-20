@@ -6,9 +6,9 @@ async function getPokemon(name) {
   }
 
 
-const init = async (position) => {
+const init = async (position,numElementos) => {
   
-    for(let i=position;i<=position+11;i++){
+    for(let i=position;i<=position+numElementos;i++){
       await getPokemon(i);  
     }
   
@@ -49,9 +49,22 @@ const init = async (position) => {
       pokeName$$.textContent=pokemon.name;
       elementList$$.appendChild(pokeName$$);
 
-      
+      const pokePie$$ = document.createElement("div");
+      pokePie$$.className='cardPie'
+      elementList$$.appendChild(pokePie$$);
 
-  
+      const pokeSlot1$$ = document.createElement("div");
+      pokeSlot1$$.className='cardSlot'+ pokemon.types[0].type.name ;
+      pokeSlot1$$.textContent =pokemon.types[0].type.name ; // poner el tipo
+      pokePie$$.appendChild(pokeSlot1$$);
+
+      if(pokemon.types[1]){
+        const pokeSlot2$$ = document.createElement("div");
+        pokeSlot2$$.className='cardSlot'+ pokemon.types[0].type.name ;
+        pokeSlot2$$.textContent =pokemon.types[1].type.name ; // poner el tipo
+        pokePie$$.appendChild(pokeSlot2$$);
+      }
+        
   
     }
   };
