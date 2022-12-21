@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./styles/images/pokemon.ico" type="image/x-icon">
     <title>Pokedex</title>
     <link rel="stylesheet" href="./styles/specimen_files/specimen_stylesheet.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="./styles/style.css">
@@ -21,21 +22,24 @@
     
 </head>
 <body>
-
-
     <div class="pokeMain">
         <div class="menu">            
             <h1>Pokédex</h1>
-            <!-- <button id="btn1" class="boton">Cargar 12 pokemons más</button> -->
-            <button id="btn3" class="boton">Cargar los 150 pokemons</button>
             <button id="btn2" class="boton">Cambia resolución</button>
+            <div class="buscador">                
+                <input class="search" type="text" name="search" style="width: 100px;">
+                <button id='filtrar' class="btn">Filtrar</button>
+                <button id='todos' class="btn">todos</button>
+                <button id='sort' class="btn">A-Z</button>
+            </div>
+           
         </div>        
         <div class="container">            
             <ol class="pokedex">
             </ol>
         </div>  
-        <div class="foot">
-            <button id="btn1" class="boton">Cargar 12 pokemons más</button>
+        <div class="foot">            
+            <p>(C) Pedro Fernández Macarrón</p>                 
         </div>
     </div>
 </body>

@@ -1,40 +1,119 @@
 let actualPos=1;
 let pokeArray = [];
-let imgHigh=[];
-let imgLow=[];
-let altaRes = false;
+let prArray = [];
+let imgHigh = [];
+let imgLow =[];
+let altaRes = true;
+let ordenNum = true;
+let numElementos = 151;
+const myDiv$$ = document.querySelector(".pokedex");
+const search = document.querySelector(".search").value;
 
-const cargarMas = () => {
-  actualPos = actualPos + 12;
-  init(actualPos,11); 
-}
+!altaRes ? document.querySelector('#btn2').textContent='Alta resolución' : document.querySelector('#btn2').textContent='Baja resolución';
 
-const cambiaResolucion = () => {
+!ordenNum ? document.querySelector('#sort').textContent='Nº' : document.querySelector('#sort').textContent='A-Z';
+
+const cambiaResolucion = () => {  
   altaRes = !altaRes;
-  for(i=0;i<pokeArray.length;i++){
-    miImg$$ = document.getElementById(i+1);    
+  !altaRes ? document.querySelector('#btn2').textContent='Alta resolución' : document.querySelector('#btn2').textContent='Baja resolución';
+  for(i=0 ; i < prArray.length ; i++){
+    miImg$$ = document.getElementById(i+1);
     if(altaRes){
-      miImg$$.src = imgHigh[i];  
+      miImg$$.src = prArray[i].sprites.alta;  
     }else{
-      miImg$$.src = imgLow[i];  
+      miImg$$.src = prArray[i].sprites.front_default;  
     }    
   }  
 }
 
-const cargarTodos = () =>{
-  console.log("cargar todos",actualPos,150-actualPos-12)
-  actualPos = actualPos + 12;
-  init(actualPos,150-actualPos);   
+
+const filtrar = () =>{
+  const search = document.querySelector(".search").value;
+  if(search ===''){
+    prArray=[...pokeArray];
+  } else { 
+      prArray = pokeArray.filter(
+      (element) => {
+        if(element.name.toLowerCase().includes(search.toLowerCase())){
+            return element;
+        }
+        if(element.types[0].type.name.toLowerCase().includes(search.toLowerCase())){
+          return element;
+      }
+      if(element.types[1]?.type.name.toLowerCase().includes(search.toLowerCase())){
+        return element;
+    }
+
+      });
+  } 
+  myDiv$$.innerHTML='';   
+  numElementos = prArray.length;
+  prPokemons(1);
 }
 
+const todos = () =>{
+  document.querySelector(".search").value='';
+  filtrar();  
+}
 
-const btn1 = document.querySelector('#btn1');
-btn1.onclick = cargarMas;  
+const mostrarMas =() =>{
+  myDiv$$.innerHTML='';   
+  numElementos += 12;
+  prPokemons(1);
+}
+
+const ordenar=()=>{   
+  ordenNum = !ordenNum;
+  !ordenNum ? document.querySelector('#sort').textContent='Nº' : document.querySelector('#sort').textContent='A-Z';
+  if(!ordenNum){
+  pokeArray.sort(function (a, b) {
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+  } else{
+    pokeArray.sort(function (a, b) {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
+
+
+
+  }
+  prArray=[...pokeArray];
+  filtrar();
+  // myDiv$$.innerHTML='';   
+  // numElementos = prArray.length;
+  // prPokemons(1);
+
+}
 
 const btn2 = document.querySelector('#btn2');
 btn2.onclick = cambiaResolucion;  
 
-const btn3 = document.querySelector('#btn3');
-btn3.onclick = cargarTodos;  
+const btn1 = document.querySelector('#todos');
+btn1.onclick = todos;  
 
-init(1,11);
+const btn3 = document.querySelector('#sort');
+btn3.onclick = ordenar;  
+
+const btn4 = document.querySelector('#filtrar');
+btn4.onclick = filtrar;  
+
+cargarPokemons(1,12);
+
+
+
+
+

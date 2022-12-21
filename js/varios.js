@@ -19,3 +19,7 @@ function zeroFill( number, width )
   }
   return number + ""; // siempre devuelve tipo cadena
 }
+
+const capi=(word)=>{
+  return word.charAt(0).toUpperCase()+word.slice(1);
+}

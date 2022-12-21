@@ -1,10 +1,9 @@
-/* dark_grey  #616161; */
 *{
     padding: 0;
     margin: 0;
     text-decoration: none;
     list-style: none;
-    font-family: 'Flexo-CapsDEMO'
+    /* font-family: 'Flexo-CapsDEMO';     */
 }
 
 @font-face {
@@ -15,26 +14,82 @@
     font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
-.pokeMain{
-    /* background-color: rgb(39, 39, 39); */
+
+
+.pokeMain{    
     max-width: 100%;
     background-image:url("./images/dark_background.png");
-    /* background-repeat:repeat; */    
-    font-family: "Flexo-Demi",arial,sans-serif;
+    /* font-family: "Flexo-Demi",arial,sans-serif; */
+    font-family: 'Flexo-CapsDEMO'; 
     color: grey;
+    font-size: 20px;
 }
 
 .menu{
-    margin: 0px auto;
+
+    /* margin: 0px auto; */
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
-    padding: 20px;
+    justify-items: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-family: "flexo-regular";
     font-size: 30px;
     background-color: white;
-    width: 80%;
+    width: 100%;
 }
+
+@media (max-width: 600px) {
+  .menu{ 
+
+  } 
+}
+
+
+@media (max-width: 600px) {
+  .menu{ 
+    display: flex;
+    flex-direction: column;   
+  }
+}
+
+.buscador{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap:20px;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .buscador{ 
+    display: flex;
+    flex-direction: column;
+  } 
+}
+
+.search{
+  font-family: 'Flexo-CapsDEMO'; 
+  color: grey;
+  font-size: 15px;
+  border-radius: 5px;
+  height: 25px;
+}
+
+.btn{
+  font-family: 'Flexo-CapsDEMO'; 
+  color: grey;
+  font-size: 15px;
+  border-radius: 5px;    
+  padding: 10px;
+}
+
 
 .container{
     display: flex;
@@ -62,8 +117,6 @@
 
 
 .pokeCard{
-    /* width: 480px;
-    height: 480px; */
     background-color:rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -73,16 +126,45 @@
     font-family: "Flexo-Demi",arial,sans-serif;
     font-size: 145%;
     padding-bottom: 50px;;
+    width: 222px;
+}
+
+@media (max-width: 600px) {
+  .pokeCard{ 
+    width: 253px;  
+  }
+  .pokeCard:hover{ 
+    width: 253px;  
+  }
+}
+
+
+.pokeCard:hover{
+  width: 218px;
+  border: 2px solid rgb(196, 196, 196);
+  border-radius: 5px;
+  padding-bottom: 46px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+h1{
+    font-family: "Flexo-Demi",arial,sans-serif; 
+    color: grey;
+    font-size: 45px;  
+    margin:0px;    
 }
 h5{
+    font-family: "Flexo-Demi",arial,sans-serif;
     color: grey;
     font-size: 12.8px;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 h4{
+    font-family: "Flexo-Demi",arial,sans-serif;
     color: black;
-    font-size: 23px;
+    font-size: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -90,18 +172,31 @@ h4{
 
 .pokeImg{
     /* max-width: 180px; */
-    width: 205px;
-    
+    width: 210px;
+    height: 210px;
     background-color: rgb(240, 240, 240);
-    border-radius: 4px;
+    border-radius: 4px;  
 }
 
+@media (max-width: 600px) {
+  .pokeImg{ 
+    width: 253px;
+    height: 253px;
+  }
+}
+
+
+.pokeImg:hover{ 
+  transform: perspective(500px) rotateY(360deg);
+}
+
+   
+
 .boton{
-    font-size: 15px;
-    border-radius: 1px;
+    font-size: 20px;    
     padding: 10px;    
     min-width: 200px;
-    border: 1px solid black;
+    border: 1px solid rgb(202, 202, 202);
     border-radius: 4px;
     text-decoration: none;
     text-align: center;  
@@ -112,12 +207,13 @@ h4{
     width: 100%;
     display: flex;
     justify-content:flex-start;
-    gap:10px
+    gap:10px;
+    
   }
   .cardSlot{
     font-size: 13px;
     font-weight:600;
-    background-color: rgb(109, 226, 109);
+    background-color: rgb(182, 182, 182);
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -125,21 +221,45 @@ h4{
     width: 35%;
     text-align: center;    
   }
-  .planta{
-    background-color: rgb(109, 226, 109);    
+  .grass{
+    background-color:#9BCC50;    
   }
-  .fuego{
-    background-color: rgb(218, 148, 50);    
+  .fire{
+    background-color: #FD7D24;    
   }
+  .poison{
+    color: white;
+    background-color:#B97FC9;    
+  }
+  .flying{
+    background-color:#4592C4;    
+  }
+  .water{
+    background-color:#4592C4;    
+  }
+  .bug{
+    background-color:#729F3F;    
+  }
+  .electric{
+    background-color:#EED535;    
+  }
+  .fairy{
+    background-color:#FDB9E9;
+  }
+  .fighting{
+    background-color: #D56723;
+  }
+  
 
   .foot{
     margin: 0px auto;
     display: flex;
-    justify-content: space-evenly;
-    padding: 20px;
+    justify-content: space-evenly;  
     font-family: "flexo-regular";
     font-size: 30px;
     background-color: white;
-    width: 80%;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
