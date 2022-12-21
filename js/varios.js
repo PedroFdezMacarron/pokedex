@@ -23,3 +23,29 @@ function zeroFill( number, width )
 const capi=(word)=>{
   return word.charAt(0).toUpperCase()+word.slice(1);
 }
+
+// usa un interruptor para cambiar de url de imagen
+const cambiaResolucion = () => {  
+  altaRes = !altaRes;
+  !altaRes ? document.querySelector('#btn2').textContent='Imagen A' : document.querySelector('#btn2').textContent='Imagen B';  
+  for(i=0 ; i < prArray.length ; i++){
+    miImg$$ = document.getElementById(i+1);
+    if(altaRes){
+      miImg$$.src = prArray[i].sprites.alta;  
+    }else{
+      miImg$$.src = prArray[i].sprites.other.dream_world.front_default;  
+    }    
+  }  
+}
+
+const cambiaResolucionUno = (index) => {       
+    miImg$$ = document.getElementById(index+1);
+    if(!altaRes){
+      miImg$$.src = prArray[index].sprites.alta;  
+    }else{
+      miImg$$.src = prArray[index].sprites.other.dream_world.front_default;  
+    }    
+    
+}
+
+

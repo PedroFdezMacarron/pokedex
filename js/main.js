@@ -1,3 +1,4 @@
+// inicializa variables
 let actualPos=1;
 let pokeArray = [];
 let prArray = [];
@@ -8,25 +9,21 @@ let ordenNum = true;
 let numElementos = 151;
 const myDiv$$ = document.querySelector(".pokedex");
 const search = document.querySelector(".search").value;
-
-!altaRes ? document.querySelector('#btn2').textContent='Alta resolución' : document.querySelector('#btn2').textContent='Baja resolución';
-
+const popUp = document.querySelector("#popUp1");
+!altaRes ? document.querySelector('#btn2').textContent='Imagen A' : document.querySelector('#btn2').textContent='Imagen B';
 !ordenNum ? document.querySelector('#sort').textContent='Nº' : document.querySelector('#sort').textContent='A-Z';
 
-const cambiaResolucion = () => {  
-  altaRes = !altaRes;
-  !altaRes ? document.querySelector('#btn2').textContent='Alta resolución' : document.querySelector('#btn2').textContent='Baja resolución';
-  for(i=0 ; i < prArray.length ; i++){
-    miImg$$ = document.getElementById(i+1);
-    if(altaRes){
-      miImg$$.src = prArray[i].sprites.alta;  
-    }else{
-      miImg$$.src = prArray[i].sprites.front_default;  
-    }    
-  }  
-}
+// carga inicial de todos los pokemons
+cargarPokemons(1,12);
 
 
+
+//
+// FUNCIONES PRINCIPALES
+//
+//
+// filtra usando el array auxiliar.
+// usa el nombre y los 2 tipos para filtrar.
 const filtrar = () =>{
   const search = document.querySelector(".search").value;
   if(search ===''){
@@ -36,84 +33,47 @@ const filtrar = () =>{
       (element) => {
         if(element.name.toLowerCase().includes(search.toLowerCase())){
             return element;
-        }
+          }
         if(element.types[0].type.name.toLowerCase().includes(search.toLowerCase())){
           return element;
-      }
+          }
       if(element.types[1]?.type.name.toLowerCase().includes(search.toLowerCase())){
         return element;
-    }
-
+        }
       });
   } 
+  // limpia el contenedor y luego pinta los pokemons
   myDiv$$.innerHTML='';   
   numElementos = prArray.length;
   prPokemons(1);
 }
 
+// quita filtro y muestra todos los pokemons
 const todos = () =>{
   document.querySelector(".search").value='';
   filtrar();  
 }
 
-const mostrarMas =() =>{
-  myDiv$$.innerHTML='';   
-  numElementos += 12;
-  prPokemons(1);
-}
-
+// para ordenar usamos .sort
+// usa un interruptor. ordena por nombre o por número.
 const ordenar=()=>{   
   ordenNum = !ordenNum;
   !ordenNum ? document.querySelector('#sort').textContent='Nº' : document.querySelector('#sort').textContent='A-Z';
   if(!ordenNum){
-  pokeArray.sort(function (a, b) {
-    if (a.name > b.name) {
-      return 1;
-    }
-    if (a.name < b.name) {
-      return -1;
-    }
-    // a must be equal to b
-    return 0;
-  });
+    prArray.sort ((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1:0);    
   } else{
-    pokeArray.sort(function (a, b) {
-      if (a.id > b.id) {
-        return 1;
-      }
-      if (a.id < b.id) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    });
-
-
-
+    prArray.sort((a, b)=> parseInt(a.id) - parseInt(b.id) );
   }
-  prArray=[...pokeArray];
-  filtrar();
-  // myDiv$$.innerHTML='';   
-  // numElementos = prArray.length;
-  // prPokemons(1);
-
+  myDiv$$.innerHTML='';  
+  prPokemons(1); 
 }
 
-const btn2 = document.querySelector('#btn2');
+// DEFINICIÓN DE EVENTOS EN BOTONES
+const btn2 = document.querySelector('#btn2'); // cambiar resolución
 btn2.onclick = cambiaResolucion;  
-
-const btn1 = document.querySelector('#todos');
+const btn4 = document.querySelector('#filtrar'); // filtrar
+btn4.onclick = filtrar;
+const btn1 = document.querySelector('#todos'); // quitar filtros
 btn1.onclick = todos;  
-
-const btn3 = document.querySelector('#sort');
-btn3.onclick = ordenar;  
-
-const btn4 = document.querySelector('#filtrar');
-btn4.onclick = filtrar;  
-
-cargarPokemons(1,12);
-
-
-
-
-
+const btn3 = document.querySelector('#sort'); // cambiar orden
+btn3.onclick = ordenar;
