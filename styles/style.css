@@ -2,8 +2,7 @@
     padding: 0;
     margin: 0;
     text-decoration: none;
-    list-style: none;
-    /* font-family: 'Flexo-CapsDEMO';     */
+    list-style: none;   
 }
 
 @font-face {
@@ -20,11 +19,10 @@
 
 .pokeMain{    
     max-width: 100%;
-    background-image:url("./images/dark_background.png");
-    /* font-family: "Flexo-Demi",arial,sans-serif; */
+    background-image:url("./images/dark_background.png");   
     font-family: 'Flexo-CapsDEMO'; 
     color: grey;
-    font-size: 20px;
+    font-size: 20px;    
 }
 
 .menu{
@@ -156,6 +154,7 @@ h1{
     color: grey;
     font-size: 45px;  
     margin:0px;    
+    text-transform:capitalize; 
 }
 h5{
     font-family: "Flexo-Demi",arial,sans-serif;
@@ -222,7 +221,8 @@ h4{
     padding-right: 10px;
     border-radius: 5px;
     width: 35%;
-    text-align: center;    
+    text-align: center;   
+    text-transform:capitalize; 
   }
   .grass{
     background-color:#9BCC50;    
@@ -266,6 +266,7 @@ h4{
     padding-bottom: 20px;
 }
 
+
 .PopVisible{  
   position: absolute;
   top: 50%;
@@ -282,6 +283,7 @@ h4{
   font-size: 17px;
   border-radius: 15px;
   border: 8px solid white;
+  font-family: "Flexo-Demi",arial,sans-serif;
 
 }
 .PopInvisible{
@@ -290,11 +292,12 @@ h4{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   gap:10px;
   height: 300px;
   width:220px;
   background-color:#3264AE;
   display:none;
+  font-family: "Flexo-Demi",arial,sans-serif;
 }

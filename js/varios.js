@@ -1,15 +1,17 @@
-const pokeInfo={
-Nombre: "En negrita, indica el nombre de la carta de Pokémon.",
-HitPoints: "Es la cantidad de vida de un Pokémon, no su fuerza. Indica cuanto puede aguantar un Pokémon.",
-Ilustracion: "La imágen del Pokémon.",
-TipoPokemon:"La bola al lado de la vida es un simbolo que indica cual es el tipo de Pokémon. Puede ser Oscuro, Psíquico, Metal, Agua, Fuego, Eléctrico, Planta, Incoloro o Lucha.",
-Evolucion: "Un pequeño Pokémon en la parte superior derecha de la carta. Indica que Pokémon precede en la linea evolutiva a este Pokémon, o si es un Pokémon BASICO.",
-Ataque: "Los ataques de los Pokémon, indica cuantas cartas de energia necesita un Pokémon para realizar este ataque, su nombre (que suele estar basado en los que el pokemon realiza en el videojuego) y el efecto que causará en su rival.",
-DebilidadResistencia: "En la parte inferior de la cara podemos ver la Debilidad y Resistencia de este Pokémon, indicada con simbolos como el tipo de Pokémon. El Pokemon tendra ventaja sobre unos tipos y desventaja frente a otros.",
-CosteRetirada: "El numero de bolas estrella bajo el epígrafe retreat o retirada indica cuanto le cuesta al Pokémon escapar del combate.",
-SimboloRarezaNumeroExpansion: "Estos tres elementos no tienen efecto en el juego de cartas, pero son LA CLAVE para identificar las cartas Pokémon, por lo que les dedidaremos la próxima sección.",
+// DEFINICIÓN DE EVENTOS EN BOTONES
+const addEvents = () =>{
+  const btn2 = document.querySelector('#btn2'); // cambiar resolución
+  btn2.onclick = cambiaResolucion;  
+  const btn4 = document.querySelector('#filtrar'); // filtrar
+  btn4.onclick = filtrar;
+  const btn1 = document.querySelector('#todos'); // quitar filtros
+  btn1.onclick = todos;  
+  const btn3 = document.querySelector('#sort'); // cambiar orden
+  btn3.onclick = ordenar;
 }
 
+
+// devuelve un número completado a ceros.
 function zeroFill( number, width )
 {
   width -= number.toString().length;
@@ -20,9 +22,10 @@ function zeroFill( number, width )
   return number + ""; // siempre devuelve tipo cadena
 }
 
-const capi=(word)=>{
-  return word.charAt(0).toUpperCase()+word.slice(1);
-}
+// dvuelve la primera en mayúsculas
+// const capi=(word)=>{
+//   return word.charAt(0).toUpperCase()+word.slice(1);
+// }
 
 // usa un interruptor para cambiar de url de imagen
 const cambiaResolucion = () => {  
@@ -38,6 +41,7 @@ const cambiaResolucion = () => {
   }  
 }
 
+// cambia la imagen dentro de la carta.
 const cambiaResolucionUno = (index) => {       
     miImg$$ = document.getElementById(index+1);
     if(!altaRes){
@@ -47,5 +51,60 @@ const cambiaResolucionUno = (index) => {
     }    
     
 }
+
+
+//
+// FUNCIONES PRINCIPALES
+//
+//
+
+// filtra usando el array auxiliar.
+// usa el nombre y los 2 tipos para filtrar.
+const filtrar = () =>{
+  const search = document.querySelector(".search").value;
+  if(search ===''){
+    prArray=[...pokeArray];
+  } else { 
+      prArray = pokeArray.filter(
+      (element) => {
+        if(element.name.toLowerCase().includes(search.toLowerCase())){
+            return element;
+          }
+        if(element.types[0].type.name.toLowerCase().includes(search.toLowerCase())){
+          return element;
+          }
+      if(element.types[1]?.type.name.toLowerCase().includes(search.toLowerCase())){
+        return element;
+        }
+      });
+  } 
+  // limpia el contenedor y luego pinta los pokemons
+  myDiv$$.innerHTML='';   
+  numElementos = prArray.length;
+  prPokemons(1);
+}
+
+// quita filtro y muestra todos los pokemons
+const todos = () =>{
+  document.querySelector(".search").value='';
+  filtrar();  
+}
+
+// para ordenar usamos .sort
+// usa un interruptor. ordena por nombre o por número.
+const ordenar=()=>{   
+  ordenNum = !ordenNum;
+  !ordenNum ? document.querySelector('#sort').textContent='Nº' : document.querySelector('#sort').textContent='A-Z';
+  if(!ordenNum){
+    prArray.sort ((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1:0);    
+  } else{
+    prArray.sort((a, b)=> parseInt(a.id) - parseInt(b.id) );
+  }
+  myDiv$$.innerHTML='';  
+  prPokemons(1); 
+}
+
+
+
 
 
